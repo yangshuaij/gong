@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE configuration
+       PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+       "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration> 
+
+<!-- 开启mybatis集成的log4j日志框架 -->
+
+<!--  <settings>
+<setting name="logImpl" value="STDOUT_LOGGING"/>
+<setting name="cacheEnabled" value="true"/>
+</settings> -->
+<typeAliases>
+<!--给当前包下面的所有实体类起别名，默认是实体类类名首字母  -->
+<package name="shixian" />
+<!--<typeAlias type="myBatis.user" alias="user" />  -->
+</typeAliases>
+</configuration>

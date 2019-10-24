@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+	font{
+		font-size: 30px;
+		font-weight: 300;
+	}
+</style>
+<body background="img/98c5a19cac142bc73ec130349944f7af_1.jpg">
+
+	<div style="margin-top:150px;margin-left:500px;background-color:#9ACFEA;width: 630px;height: 300px;" >
+		<br/>
+		<form  method="get" style="margin-top:10px;margin-left:30px;">
+		<label for="h1"><font>账号：</font></label><input onblur="kmp()" id="h1" class="jpl" type="test" name="id" style="border-radius: 1%;width: 300px;height: 30px;font-size:23px"placeholder="请输入的账号"/><span id="spn1" style="position: absolute;top:180px;left:960px"></span><br/>
+		<label for="h2"><font>密码：</font></label><input onblur="kmp1()" id="h2"  class="jpl1" type="password" name="password" style="border-radius: 1%;width: 300px;height: 30px;font-size:23px"placeholder="请输入你的密码"/><span id="spn2" style="position: absolute;top:220px;left:960px"></span><br/>
+		<input type="checkbox" name="che" value="ji" style="border-radius: 1%;width: 300px;height: 20px;position:absolute;top: 300px;left: 460px;" id="h3" /> 
+		<div style="position: absolute;top: 303px;left: 630px;font-weight:500;"><label for="h3">记住密码</div></label> <div style="position: absolute;top: 300px;left: 890px;color:blanchedalmond"><a href="#" style=" text-decoration:none;font-weight:600;color:white">找回密码</a></div>
+			<input type="button" value="登录" style="width: 230px;height: 50px; position: absolute;top: 360px;left: 660px;"class="jpl2" onclick="kmp1()"/>
+		</form>
+</div>
+
+<script src="js/jquery-3.4.1.min.js"></script>
+		<script>
+		function kmp(){
+			$.ajax({
+				url:"bnd",
+				type:"post",
+				data:"id="+$(".jpl").val(),
+			    success:function(data){
+					console.log(data);
+					if(data==0){
+						$("#spn1").html("<font color='red'>账号为空</font>");
+					}
+					if(data==1){
+						$("#spn1").html("<font color='red'>账号错误</font>");	
+					}
+					if(data==2){
+						$("#spn1").html("<font color='blue'>账号正确</font>");	
+					}
+				}
+			})
+		}
+		function kmp1(){
+			$.ajax({
+				url:"bndd",
+				type:"post",
+				data:"id="+$(".jpl").val()+"&password="+$(".jpl1").val(),
+			    success:function(data){
+			    	$("#spn1").html("");
+					$("#spn2").html("");
+					if(data==1){
+						$("#spn1").html("<font color='red'>账号为空</font>");
+						$("#spn2").html("<font color='red'>密码为空</font>");
+					}
+					if(data==2){
+						$("#spn1").html("<font color='red'>账号错误</font>");
+						
+					}
+					if(data==3){
+						
+						$("#spn2").html("<font color='blue'>请点登录</font>");
+						$(".jpl2").attr("type","submit")
+					}
+					if(data==4){
+						$("#spn1").html("<font color='blue'>账号正确</font>");
+						$("#spn2").html("<font color='red'>密码错误</font>");
+					}
+				}
+			})
+		}
+	</script>
+</body>
+</html>
